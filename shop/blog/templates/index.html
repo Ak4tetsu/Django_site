@@ -1,4 +1,25 @@
-<!DOCTYPE html>
+{% extends "parent/main.html" %}
+
+{% block title %}
+{{ super }}  All Posts
+{% endblock %}
+
+{% block body %}
+    {% include "partials/carousel.html" %}
+        <h1>All Posts</h1>
+        {% if latest_posts_list %}
+            <ul>
+                {% for post in latest_posts_list %}
+                    <!-- <li><a href="/blog/{{post.id}}">{{post.slug}}</a></li> -->
+                    <li><a href="{% url 'blog_urls:ditail' post.id %}">{{post.slug}}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="color: tomato;">No post is available.</p>
+        {% endif %}
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -9,17 +30,15 @@
     </head>
     <body>
         <h1>All Posts</h1>
-        {% if latast_posts_list %}
+        {% if latest_posts_list %}
             <ul>
                 {% for post in latest_posts_list %}
                     <li><a href="/blog/{{post.id}}">{{post.slug}}</a></li>
+                    <li><a href="{% url 'blog_urls:ditail' post.id %}">{{post.slug}}</a></li>
                 {% endfor %}
             </ul>
         {% else %}
             <p style="color: tomato;">No post is available.</p>
         {% endif %}
-        {% if 1 %}
-            <p>{{latast_posts_list}}</p>
-        {% endif %}
     </body>
-</html>
+</html> -->

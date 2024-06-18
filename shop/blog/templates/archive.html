@@ -1,0 +1,19 @@
+{% extends "parent/main.html" %}
+
+{% block title %}
+  {{ super }} archive year
+{% endblock %}
+
+{% block body %}
+    {% if year_filter_posts %}
+
+        {% for post in year_filter_posts %}
+            <p>{{post.title}}</p>
+        {% endfor %}
+
+    {% else %}
+
+        <h1 style="color: tomato;">No posts are available.</h1>
+
+    {% endif %}
+{% endblock %}
